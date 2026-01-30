@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>প্রিমিয়াম পোর্টফোলিও | বালাদুল আমিন</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #6366f1;
+            --accent-glow: rgba(99, 102, 241, 0.4);
+        }
+        
+        body {
+            font-family: 'Hind Siliguri', 'Plus Jakarta Sans', sans-serif;
+            background-color: #030712;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+
+        .glass {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at center, var(--accent-glow) 0%, transparent 70%);
+            filter: blur(60px);
+            pointer-events: none;
+        }
+
+        .social-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @media (min-width: 1024px) {
+            .social-card:hover {
+                transform: translateY(-10px);
+                background: rgba(99, 102, 241, 0.05);
+                border-color: var(--accent);
+                box-shadow: 0 20px 40px -20px var(--accent-glow);
+            }
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out, opacity 0.3s;
+            transform: translateY(-20px);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .tag {
+            background: rgba(99, 102, 241, 0.2);
+            color: #818cf8;
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            backdrop-filter: blur(4px);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Input Styles */
+        .custom-input {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: white !important;
+            transition: all 0.3s ease;
+        }
+        .custom-input:focus {
+            border-color: var(--accent) !important;
+            background: rgba(255, 255, 255, 0.07) !important;
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.1);
+        }
+    </style>
+</head>
+<body class="selection:bg-indigo-500/30">
+
+    <!-- Scroll to Top -->
+    <button id="scroll-top" class="fixed bottom-6 right-6 z-[70] p-3.5 bg-indigo-600 rounded-full shadow-2xl opacity-0 invisible transition-all hover:scale-110 active:scale-90">
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-[60] px-4 py-4 md:py-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center glass rounded-2xl px-5 py-3 md:px-10 md:py-4">
+            <div class="text-xl md:text-2xl font-black tracking-tighter">
+                বালাদুল<span class="text-indigo-500">আমিন</span>
+            </div>
+            
+            <div class="hidden lg:flex space-x-8">
+                <a href="#home" class="nav-link relative text-sm font-semibold text-gray-300 hover:text-white transition-colors">হোম</a>
+                <a href="#social" class="nav-link relative text-sm font-semibold text-gray-300 hover:text-white transition-colors">সোশ্যাল</a>
+                <a href="#work" class="nav-link relative text-sm font-semibold text-gray-300 hover:text-white transition-colors">প্রজেক্ট</a>
+                <a href="#contact" class="nav-link relative text-sm font-semibold text-gray-300 hover:text-white transition-colors">যোগাযোগ</a>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <a href="#contact" class="hidden sm:block bg-indigo-600 hover:bg-indigo-500 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition-all shadow-lg shadow-indigo-500/20">
+                    Hire Me!
+                </a>
+                <button id="menu-toggle" class="lg:hidden p-2 text-gray-300 hover:text-white transition-colors">
+                    <svg id="menu-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="absolute top-full left-4 right-4 mt-3 lg:hidden glass rounded-2xl p-6 flex flex-col space-y-4 text-center shadow-2xl">
+            <a href="#home" class="mobile-nav-link py-3 text-lg font-medium border-b border-white/5">হোম</a>
+            <a href="#social" class="mobile-nav-link py-3 text-lg font-medium border-b border-white/5">সোশ্যাল</a>
+            <a href="#work" class="mobile-nav-link py-3 text-lg font-medium border-b border-white/5">প্রজেক্ট</a>
+            <a href="#contact" class="mobile-nav-link py-3 text-lg font-medium">যোগাযোগ</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center pt-20">
+        <div class="hero-gradient absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[800px] aspect-square"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div class="text-center lg:text-left order-2 lg:order-1">
+                <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass border-indigo-500/20 text-indigo-400 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-6">
+                    <span class="flex h-2 w-2 rounded-full bg-indigo-500 animate-pulse"></span>
+                    <span>অনলাইনে সক্রিয় আছি</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] mb-6">
+                    আমি একজন <br class="hidden sm:block"> 
+                    <span id="typed-text" class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400"></span>
+                </h1>
+                <p class="text-base md:text-lg text-gray-400 max-w-xl mx-auto lg:mx-0 leading-relaxed mb-10">
+                    আধুনিক টেকনোলজি এবং ইউজার-সেন্ট্রিক ডিজাইন ব্যবহার করে আপনার ব্যবসার জন্য প্রিমিয়াম ডিজিটাল সমাধান তৈরি করি।
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+                    <a href="#social" class="px-8 py-4 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-500 transition-all shadow-xl shadow-indigo-500/25 text-center">
+                        সোশ্যাল মিডিয়া
+                    </a>
+                    <a href="#work" class="px-8 py-4 glass text-white font-bold rounded-2xl hover:bg-white/10 transition-all text-center">
+                        প্রজেক্ট দেখুন
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex justify-center order-1 lg:order-2">
+                <div class="relative w-56 h-56 sm:w-72 sm:h-72 lg:w-96 lg:h-96">
+                    <div class="absolute inset-0 rounded-[3rem] border-2 border-dashed border-indigo-500/30 animate-[spin_20s_linear_infinite]"></div>
+                    <div class="absolute inset-4 glass rounded-[2.5rem] overflow-hidden border-white/10 shadow-2xl p-3">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" alt="প্রোফাইল" class="w-full h-full object-cover rounded-[1.8rem]">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section id="social" class="py-24 md:py-32 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-black mb-4">সোশ্যাল নেটওয়ার্ক</h2>
+                <div class="h-1.5 w-20 bg-indigo-600 mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-400 max-w-xl mx-auto text-sm md:text-base">আমার কাজ এবং টেকনিক্যাল আপডেট পেতে নিচের মাধ্যমগুলোতে যুক্ত হতে পারেন।</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-8">
+                <a href="#"target="_blank" class="social-card glass p-8 rounded-[2rem] flex flex-col items-center text-center reveal">
+                    <div class="w-14 h-14 bg-blue-600/20 rounded-2xl flex items-center justify-center text-blue-500 mb-6">
+                        <i class="fab fa-linkedin-in text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1">LinkedIn</h3>
+                    <p class="text-xs text-gray-500 mb-5">প্রফেশনাল নেটওয়ার্ক</p>
+                    <span class="text-[10px] font-bold text-blue-400 bg-blue-400/10 px-4 py-1.5 rounded-full uppercase tracking-wider">কানেক্ট করুন</span>
+                </a>
+
+                <a href="#" target="_blank" class="social-card glass p-8 rounded-[2rem] flex flex-col items-center text-center reveal" style="transition-delay: 100ms">
+                    <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-white mb-6">
+                        <i class="fab fa-github text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1">GitHub</h3>
+                    <p class="text-xs text-gray-500 mb-5">কোড আর্কাইভ</p>
+                    <span class="text-[10px] font-bold text-gray-300 bg-white/10 px-4 py-1.5 rounded-full uppercase tracking-wider">ফলো করুন</span>
+                </a>
+
+                <a href="https://www.facebook.com/baladulamin99" target="_blank" class="social-card glass p-8 rounded-[2rem] flex flex-col items-center text-center reveal" style="transition-delay: 200ms">
+                    <div class="w-14 h-14 bg-indigo-600/20 rounded-2xl flex items-center justify-center text-indigo-500 mb-6">
+                        <i class="fab fa-facebook-f text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1">Facebook</h3>
+                    <p class="text-xs text-gray-500 mb-5">কমিউনিটি কানেক্ট</p>
+                    <span class="text-[10px] font-bold text-indigo-400 bg-indigo-400/10 px-4 py-1.5 rounded-full uppercase tracking-wider">যুক্ত হন</span>
+                </a>
+
+                <a href="#" target="_blank" class="social-card glass p-8 rounded-[2rem] flex flex-col items-center text-center reveal" style="transition-delay: 300ms">
+                    <div class="w-14 h-14 bg-pink-600/20 rounded-2xl flex items-center justify-center text-pink-500 mb-6">
+                        <i class="fab fa-instagram text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1">Instagram</h3>
+                    <p class="text-xs text-gray-500 mb-5">লাইফস্টাইল আপডেট</p>
+                    <span class="text-[10px] font-bold text-pink-400 bg-pink-400/10 px-4 py-1.5 rounded-full uppercase tracking-wider">ফলো করুন</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="work" class="py-20 px-6 bg-slate-900/20">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-black mb-4">নির্বাচিত প্রজেক্ট</h2>
+                <div class="h-1.5 w-20 bg-indigo-600 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="social-card glass rounded-[2.5rem] p-5 flex flex-col h-full reveal">
+                    <div class="relative h-52 rounded-[2rem] overflow-hidden mb-6">
+                        <img src="https://images.unsplash.com/photo-1556742044-3c52d6e88c62?q=80&w=800" alt="Cash App" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4"><span class="tag">Web App</span></div>
+                    </div>
+                    <div class="px-2 flex-grow">
+                        <h3 class="text-xl font-bold mb-2">CashApp</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">একটি আধুনিক ফিন্যান্স ট্র্যাকিং ড্যাশবোর্ড যা ইউজারের খরচ নিয়ন্ত্রণে সাহায্য করে।</p>
+                    </div>
+                    <a href="#" class="flex items-center justify-center space-x-2 bg-indigo-600/10 hover:bg-indigo-600 text-indigo-400 hover:text-white py-4 rounded-2xl font-bold transition-all group">
+                        <span>লাইভ প্রিভিউ</span>
+                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="social-card glass rounded-[2.5rem] p-5 flex flex-col h-full reveal" style="transition-delay: 150ms">
+                    <div class="relative h-52 rounded-[2rem] overflow-hidden mb-6">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=800" alt="CGPA" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4"><span class="tag">Utility</span></div>
+                    </div>
+                    <div class="px-2 flex-grow">
+                        <h3 class="text-xl font-bold mb-2">CGPA Calculator</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">শিক্ষার্থীদের জন্য জিপিএ এবং সিজিপিএ গণনার একটি দ্রুত এবং সহজ ক্যালকুলেটর।</p>
+                    </div>
+                    <a href="#" class="flex items-center justify-center space-x-2 bg-indigo-600/10 hover:bg-indigo-600 text-indigo-400 hover:text-white py-4 rounded-2xl font-bold transition-all group">
+                        <span>লাইভ প্রিভিউ</span>
+                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="social-card glass rounded-[2.5rem] p-5 flex flex-col h-full reveal" style="transition-delay: 300ms">
+                    <div class="relative h-52 rounded-[2rem] overflow-hidden mb-6">
+                        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800" alt="News" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4"><span class="tag">Portal</span></div>
+                    </div>
+                    <div class="px-2 flex-grow">
+                        <h3 class="text-xl font-bold mb-2">নিউজ পোর্টাল</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">রিয়েল-টাইম আপডেট সমৃদ্ধ একটি আধুনিক নিউজ কন্টেন্ট ম্যানেজমেন্ট সিস্টেম।</p>
+                    </div>
+                    <a href="#" class="flex items-center justify-center space-x-2 bg-indigo-600/10 hover:bg-indigo-600 text-indigo-400 hover:text-white py-4 rounded-2xl font-bold transition-all group">
+                        <span>লাইভ প্রিভিউ</span>
+                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-black mb-4">যোগাযোগ করুন</h2>
+                <div class="h-1.5 w-20 bg-indigo-600 mx-auto rounded-full mb-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 glass rounded-[2.5rem] overflow-hidden">
+                <!-- Info -->
+                <div class="lg:col-span-5 p-10 md:p-14 bg-indigo-600 text-white relative">
+                    <h3 class="text-3xl font-bold mb-10">ঠিকানা</h3>
+                    <div class="space-y-8">
+                        <div class="flex items-center space-x-6">
+                            <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center"><i class="fas fa-location-dot"></i></div>
+                            <div><p class="text-xs opacity-70 uppercase font-bold">অবস্থান</p><p class="text-lg">গুলশান এভিনিউ, ঢাকা-১২১২</p></div>
+                        </div>
+                        <div class="flex items-center space-x-6">
+                            <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center"><i class="fas fa-envelope"></i></div>
+                            <div><p class="text-xs opacity-70 uppercase font-bold">ইমেইল</p><p class="text-lg">support@domain.com</p></div>
+                        </div>
+                    </div>
+                    <div class="mt-16">
+                        <p class="text-xs opacity-70 uppercase font-bold mb-4">সোশ্যাল</p>
+                        <div class="flex gap-4">
+                            <a href="#"target="_blank" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/30 transition-all"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"target="_blank" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/30 transition-all"><i class="fab fa-twitter"></i></a>
+                            <a href="#"target="_blank" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/30 transition-all"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form (Updated with Formspree) -->
+                <div class="lg:col-span-7 p-10 md:p-14">
+                    <form id="contactForm" action="https://formspree.io/f/mrekokbl" method="POST" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-sm font-bold text-gray-400">আপনার নাম</label>
+                                <input type="text" name="name" placeholder="আরিয়ান খান" class="custom-input w-full px-5 py-4 rounded-2xl outline-none" required>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-sm font-bold text-gray-400">ইমেইল</label>
+                                <input type="email" name="email" placeholder="example@mail.com" class="custom-input w-full px-5 py-4 rounded-2xl outline-none" required>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-gray-400">বার্তা</label>
+                            <textarea name="message" rows="4" placeholder="আপনার বার্তাটি লিখুন..." class="custom-input w-full px-5 py-4 rounded-2xl outline-none resize-none" required></textarea>
+                        </div>
+                        <button type="submit" id="submitBtn" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-5 rounded-2xl transition-all shadow-xl shadow-indigo-500/20">
+                            মেসেজ পাঠান
+                        </button>
+                    </form>
+                    <div id="statusMessage" class="hidden mt-4 p-4 rounded-xl text-center font-bold"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 bg-black/30">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-gray-500 text-sm">© ২০২৪ সর্বস্বত্ব সংরক্ষিত | বালাদুল আমিন</p>
+            <div class="flex space-x-8 text-xs font-bold uppercase tracking-widest text-gray-500">
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Typing Animation
+        new Typed('#typed-text', {
+            strings: ['ফুল স্ট্যাক ডেভেলপার', 'ইউআই/ইউএক্স ডিজাইনার', 'ডিজিটাল স্ট্র্যাটেজিস্ট'],
+            typeSpeed: 50,
+            backSpeed: 30,
+            loop: true,
+            backDelay: 2500
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            const isActive = mobileMenu.classList.contains('active');
+            menuIcon.innerHTML = isActive 
+                ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>' 
+                : '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>';
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>';
+            });
+        });
+
+        // Reveal Animations
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Scroll Top Button
+        const scrollTopBtn = document.getElementById('scroll-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 400) {
+                scrollTopBtn.classList.add('opacity-100', 'visible');
+                scrollTopBtn.classList.remove('opacity-0', 'invisible');
+            } else {
+                scrollTopBtn.classList.remove('opacity-100', 'visible');
+                scrollTopBtn.classList.add('opacity-0', 'invisible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // AJAX Form Handling with Formspree
+        const form = document.getElementById('contactForm');
+        const btn = document.getElementById('submitBtn');
+        const status = document.getElementById('statusMessage');
+
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            // UI Feedback
+            btn.innerHTML = '<i class="fas fa-spinner animate-spin mr-2"></i> পাঠানো হচ্ছে...';
+            btn.disabled = true;
+            status.classList.add('hidden');
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    status.textContent = 'ধন্যবাদ! আপনার বার্তাটি সফলভাবে পাঠানো হয়েছে।';
+                    status.classList.remove('hidden', 'bg-red-500/20', 'text-red-400');
+                    status.classList.add('bg-green-500/20', 'text-green-400');
+                    btn.innerHTML = 'সফল হয়েছে!';
+                    form.reset();
+                } else {
+                    const data = await response.json();
+                    if (Object.hasOwn(data, 'errors')) {
+                        status.textContent = data["errors"].map(error => error["message"]).join(", ");
+                    } else {
+                        status.textContent = "দুঃখিত! কোনো সমস্যা হয়েছে। আবার চেষ্টা করুন।";
+                    }
+                    status.classList.remove('hidden', 'bg-green-500/20', 'text-green-400');
+                    status.classList.add('bg-red-500/20', 'text-red-400');
+                    btn.innerHTML = 'আবার চেষ্টা করুন';
+                    btn.disabled = false;
+                }
+            } catch (error) {
+                status.textContent = "ইন্টারনেট সংযোগ চেক করুন এবং আবার চেষ্টা করুন।";
+                status.classList.remove('hidden');
+                status.classList.add('bg-red-500/20', 'text-red-400');
+                btn.innerHTML = 'এরর!';
+                btn.disabled = false;
+            }
+
+            // Hide status after some time
+            setTimeout(() => {
+                status.classList.add('hidden');
+                if(btn.innerHTML === 'সফল হয়েছে!') {
+                    btn.innerHTML = 'মেসেজ পাঠান';
+                    btn.disabled = false;
+                }
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
